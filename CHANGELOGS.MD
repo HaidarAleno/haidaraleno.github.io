@@ -50,4 +50,7 @@
 
 ## Update 8 [v2026.11.19]:
 - BIG Update on Sawitron.
-- More changelogs on the diff source code.
+- More changelogs on the diff source code
+  ** Hotfix 1:
+  - Harder to cheat.
+  - More changelogs on the diff source code.
