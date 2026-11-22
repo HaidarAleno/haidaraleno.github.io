@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sawitron</title>
+        <link rel="stylesheet" href="/games/sawitron/style.css">
+    </head>
+    <body>
+        <div id="sleepMode-screen"> </div>
+        <div id="loading-screen">
+            
+        </div>
+        <div id="app-layout">
+            <nav id="sidebar">
+                <div id="sidebar-tabs">
+                    <button class="nav-tab active" data-tab="combat">
+                        <span class="nav-icon">1.</span>
+                        <span class="nav-label">Combat</span>
+                    </button>
+
+                    <button class="nav-tab" data-tab="idk">
+                        <span class="nav-icon">2.</span>
+                        <span class="nav-label">idk</span>
+                    </button>
+
+                    <button class="nav-tab" data-tab="idk2">
+                        <span class="nav-icon">3.</span>
+                        <span class="nav-label">idk2</span>
+                    </button>
+
+                    <button class="nav-tab" data-tab="idk3">
+                        <span class="nav-icon">4.</span>
+                        <span class="nav-label">idk3</span>
+                    </button>
+
+                    <button class="nav-tab" data-tab="shop">
+                        <span class="nav-icon">5.</span>
+                        <span class="nav-label">Shop</span>
+                    </button>
+
+                    <button class="nav-tab" data-tab="achievements">
+                        <span class="nav-icon">6.</span>
+                        <span class="nav-label">Achievements</span>
+                    </button>
+
+                    <button class="nav-tab" data-tab="settings">
+                        <span class="nav-icon">7.</span>
+                        <span class="nav-label">Settings</span>
+                    </button>
+                </div>
+            </nav>
+
+            <main id="main-content">
+                <section class="game-tab" id="combat">
+                    <div id="main-area">
+                        <div id="main-container">
+                            <h2 class="counter">
+                                Sawit: <span id="sawit-counter">0</span>
+                            </h2>
+                            
+                            <div id="setlevel-container">
+                                <button id="low-level">-</button>
+                                <button id="high-level">+</button>
+                            </div>
+
+                            <br>
+                            
+                            <div id="enemy-info">
+                                <div id="level-frame">
+                                    <label id="level-label">1</label>
+                                </div>
+
+                                <div class="progress-container">
+                                    <div id="progress-hp"></div>
+                                    <div id="progress-hp-bg"></div>
+                                    <label id="progress-hp-label">100</label>
+                                </div>
+                            </div>
+                            <br>
+
+                            <!-- Floating damage numbers are inserted into this container. -->
+                            <div id="damage-container">
+                                <img id="main-sawit"
+                                    src="../../assets/sawitron/sawit.webp"
+                                    alt="Sawit">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="game-tab" id="idk" hidden>
+                    <div class="tab-container">
+                        <h2>Idk what to do lol</h2>
+                        <p>Look here it is something... fhhahhhh</p>
+                    </div>
+                </section>
+
+                <section class="game-tab" id="idk2" hidden>
+                    <div class="tab-container">
+                        <h2>Idk v2</h2>
+                        <p>Look herething... fhhahhhh</p>
+                    </div>
+                </section>
+
+                <section class="game-tab" id="idk3" hidden>
+                    <div class="tab-container">
+                        <h2>Idk v3</h2>
+                        <p>Look here it is sog... fhhahhhh</p>
+                    </div>
+                </section>
+
+                <section class="game-tab" id="shop" hidden>
+                    <!-- Shop header: KonohaToken is the only currency displayed here. -->
+                    <header class="tab-header shop-header">
+                        <h1>Shop</h1>
+
+                        <div class="header-currencies">
+                            <span class="currency-chip">
+                                🍃 KonohaToken: <b id="header-konoha">0</b>
+                            </span>
+                        </div>
+                    </header>
+
+                    <div class="tab-container">
+                        <h2>Idk v4</h2>
+                        <p>Look here it is sog... fhhahhhh</p>
+                    </div>
+                </section>
+
+                <section class="game-tab" id="achievements" hidden>
+                    <div class="tab-container">
+                        <h2>achievements</h2>
+                        <p>hahhhh</p>
+                    </div>
+                </section>
+
+                <section class="game-tab" id="settings" hidden>
+                    <div class="tab-container">
+                        <div class="settings-layout">
+
+                            <!-- Settings category navigation. -->
+                            <nav class="settings-tabs">
+                                <button class="settings-tab-button active"
+                                        data-settings-tab="settings-general">General</button>
+                                <button class="settings-tab-button"
+                                        data-settings-tab="settings-audio">Audio</button>
+                                <button class="settings-tab-button"
+                                        data-settings-tab="settings-interface">Interface</button>
+                                <button class="settings-tab-button"
+                                        data-settings-tab="settings-gameplay">Gameplay</button>
+                            </nav>
+
+                            <div class="settings-content">
+
+                                <section class="settings-panel" id="settings-general">
+                                    <h2>General</h2>
+
+                                    <label class="setting-row">
+                                        <span>Notation type</span>
+                                        <select id="notations"
+                                                onchange="Game.changeSetting('notations', this.value)">
+                                            <option value="normal">Normal</option>
+                                            <option value="scientific">Scientific</option>
+                                            <option value="engineering">Engineering</option>
+                                        </select>
+                                    </label>
+                                </section>
+
+                                <section class="settings-panel" id="settings-audio" hidden>
+                                    <h2>Audio</h2>
+
+                                    <label class="setting-row volume-setting">
+                                        <span>Music volume <output id="music-volume-value">100%</output></span>
+                                        <input id="music-volume" type="range"
+                                            min="0" max="100" value="100">
+                                    </label>
+
+                                    <label class="setting-row volume-setting">
+                                        <span>SFX volume <output id="sfx-volume-value">100%</output></span>
+                                        <input id="sfx-volume" type="range"
+                                            min="0" max="100" value="100">
+                                    </label>
+
+                                    <label class="setting-row">
+                                        <span>Sawit SFX</span>
+                                        <select id="sawitSFX"></select>
+                                    </label>
+                                </section>
+
+                                <section class="settings-panel" id="settings-interface" hidden>
+                                    <h2>Interface</h2>
+
+                                    <label class="setting-row">
+                                        <span>Show damage numbers</span>
+                                        <input id="show-damage-numbers" type="checkbox" checked>
+                                    </label>
+                                </section>
+
+                                <section class="settings-panel" id="settings-gameplay" hidden>
+                                    <h2>Gameplay</h2>
+                                    <p>More gameplay options can be added here later.</p>
+                                </section>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <script src="/utils/js/break_infinity.js"></script>
+        <script type="module" src="/games/sawitron/js/main.js"></script>
+    </body>
+</html>
