@@ -944,8 +944,5 @@ document.addEventListener("visibilitychange", function() {
     }
 });
 
-window.Game = game;
-window.timerManager = timerManager;
-
 game.init();
 ['pointerdown', 'keydown', 'touchstart'].forEach(e => window.addEventListener(e, unlockMusic, { once: true }));

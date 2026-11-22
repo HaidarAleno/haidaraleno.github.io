@@ -542,7 +542,4 @@ sfxVolumeSlider.addEventListener("input", event => {
 showDamageNumbersCheckbox.addEventListener("change", event => {
     game.changeSetting("show_damage_numbers", event.target.checked);
 })
-window.Game = game;
-window.audioCache = AudioCache;
-window.audioPool = activeAudioPool;
 game.init();
